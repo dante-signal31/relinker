@@ -4,7 +4,7 @@ using relinker;
 
 namespace Tests
 {
-    public class Tests
+    public class FileWalkerTests
     {
         [SetUp]
         public void Setup()
