@@ -7,6 +7,9 @@ namespace relinker
 {
     public class FileWalker
     {
+        /// <summary>
+        /// FileWalker returns two kind of objects: File and Folder.
+        /// </summary>
         public enum EntryType
         {
             File,
@@ -16,25 +19,34 @@ namespace relinker
         /// <summary>
         /// Type returned by FileWalk iterator.
         /// </summary>
-        /// <value><c>Name</c>: Gives entry pathname.</value>
-        /// <value><c>Type</c>: Gives entry type.</value>
         public struct Entry: IEqualityComparer<Entry>
         {
             private string _name;
             private EntryType _type;
 
+            /// <summary>
+            /// Create a new Entry object.
+            /// </summary>
+            /// <param name="Name">Entry pathname.</param>
+            /// <param name="Type">Type pathname.</param>
             public Entry(string Name, EntryType Type)
             {
                 this._name = Name;
                 this._type = Type;
             }
 
+            /// <summary>
+            /// Read-write property to entry pathname.
+            /// </summary>
             public string Name
             {
                 get => _name;
                 set => _name = value;
             }
 
+            /// <summary>
+            /// Read-write property to entry type.
+            /// </summary>
             public EntryType Type
             {
                 get => _type;
