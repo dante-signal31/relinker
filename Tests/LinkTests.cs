@@ -1,5 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.IO;
+using NUnit.Framework;
 using relinker;
+using TestCommon.Fs;
 
 namespace Tests
 {
@@ -19,11 +21,27 @@ namespace Tests
             Assert.True(expectedPath.Equals(recoveredPath));
         }
 
-        // [Test]
-        // public void TestWriteLink()
-        // {
-        //     string linkPathName = "..\\..\\..\\test_data\\Original root\\Folder 2\\Folder A.lnk";
-        //     
-        // }
+        [Test]
+        public void TestWriteLink()
+        {
+            string linkPathName = "..\\..\\..\\test_data\\Original root\\Folder 2\\Folder A.lnk";
+            using (var tempFolder = new Temp(Temp.TempType.Folder))
+            {
+                // Copy test link to a temporal location. I don't want to mess with original.
+                string baseLinkName = Path.GetFileName(linkPathName);
+                string temporalLinkPathName = Path.Combine(tempFolder.TempPath, baseLinkName);
+                Ops.copy_file(linkPathName, temporalLinkPathName);
+                // Test changing path.
+                relinker.Link link = new Link(temporalLinkPathName);
+                string originalPath = link.Target;
+                string expectedOriginalPath = "F:\\Desarrollos\\relinker\\relinker\\test_data\\Original root\\Folder 1\\Folder A";
+                string modifiedPath = "F:\\Desarrollos\\relinker\\relinker\\test_data\\Modified folder\\Folder 1\\Folder A";
+                link.Target = modifiedPath;
+                // Link path should have been updated. Check if actually it is.
+                relinker.Link newLink = new Link(temporalLinkPathName);
+                string recoveredPath = newLink.Target;
+                Assert.True(recoveredPath.Equals(modifiedPath));
+            }
+        }
     }
 }
