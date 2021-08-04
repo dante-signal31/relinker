@@ -35,6 +35,7 @@ namespace Tests
                 relinker.Link link = new Link(temporalLinkPathName);
                 string originalPath = link.Target;
                 string expectedOriginalPath = "F:\\Desarrollos\\relinker\\relinker\\test_data\\Original root\\Folder 1\\Folder A";
+                Assert.True(originalPath.Equals(expectedOriginalPath));
                 string modifiedPath = "F:\\Desarrollos\\relinker\\relinker\\test_data\\Modified folder\\Folder 1\\Folder A";
                 link.Target = modifiedPath;
                 // Link path should have been updated. Check if actually it is.
