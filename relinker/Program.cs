@@ -88,9 +88,10 @@ namespace relinker
             {
                 Console.WriteLine("ERROR: Root path not provided.");
                 Environment.Exit(3);
-            } else if (!Directory.Exists(rootPath))
+            } 
+            else if (!Directory.Exists(rootPath))
             {
-                Console.WriteLine("ERROR: Root path does not exists.");
+                Console.WriteLine("ERROR: Root path does not exist.");
                 Environment.Exit(3);
             }
             
@@ -98,6 +99,23 @@ namespace relinker
             {
                 Console.WriteLine("ERROR: String to be modified or new string not provided.");
                 Environment.Exit(87);
+            }
+
+            if (backupPath != null)
+            {
+                if (Directory.Exists(backupPath))
+                {
+                    if (Directory.GetDirectories(backupPath).Length > 0 || Directory.GetFiles(backupPath).Length > 0)
+                    {
+                        Console.WriteLine("ERROR: Backup folder is not empty.");
+                        Environment.Exit(87);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("ERROR: Backup path does not exist.");
+                    Environment.Exit(3);
+                }
             }
 
             // Walk through folder tree.
