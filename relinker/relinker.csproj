@@ -3,9 +3,23 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Tool to batch update path of lnk files.</Title>
+        <Authors>dante.signal31@gmail.com</Authors>
+        <Copyright>Copyright (c) 2021 Dante-Signal31 &lt;dante.signal31@gmail.com&gt;. All rights reserved.</Copyright>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/dante-signal31/relinker</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/dante-signal31/relinker.git</RepositoryUrl>
+        <RepositoryType>GIT</RepositoryType>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <Version>1.0.0</Version>
+        <AssemblyTitle>relinker</AssemblyTitle>
+        <Company>dante.signal31@gmail.com</Company>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="CommandLineParser" Version="2.8.0" />
+      <PackageReference Include="DanteSignal31.TestCommon" Version="1.1.0" />
       <PackageReference Include="securifybv.ShellLink" Version="0.1.0" />
     </ItemGroup>
 
