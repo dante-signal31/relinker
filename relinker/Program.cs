@@ -126,22 +126,32 @@ namespace relinker
                     if (IsLinkFile(entry.Name))
                     {
                         Link link = new Link(entry.Name);
-                        string linkTarget = link.Target;
-                        string newTarget = linkTarget.Replace(stringToModify, newString);
-                        if (backupPath != null)
+                        try
                         {
-                            string fileRelativePath = Path.GetRelativePath(rootPath, entry.Name);
-                            Ops.copy_file(entry.Name, Path.Combine(backupPath, fileRelativePath));
+                            // May raise a NullReferenceException with some malformed links.
+                            // In that case we are going to skip that link, leaving an error message.
+                            string linkTarget = link.Target; 
+                            string newTarget = linkTarget.Replace(stringToModify, newString);
+                            if (backupPath != null)
+                            {
+                                string fileRelativePath = Path.GetRelativePath(rootPath, entry.Name);
+                                Ops.copy_file(entry.Name, Path.Combine(backupPath, fileRelativePath));
+                            }
+                            if (!simulate)
+                            {
+                                link.Target = newTarget;
+                            }
+                            if (verbose)
+                            {
+                                Console.WriteLine(entry.Name);
+                                Console.WriteLine("\t --" + linkTarget);
+                                Console.WriteLine("\t ++" + newTarget);
+                            }
                         }
-                        if (!simulate)
+                        catch (NullReferenceException)
                         {
-                            link.Target = newTarget;
-                        }
-                        if (verbose)
-                        {
-                            Console.WriteLine(entry.Name);
-                            Console.WriteLine("\t --" + linkTarget);
-                            Console.WriteLine("\t ++" + newTarget);
+                            if (verbose) Console.WriteLine("ERROR: Link " + entry.Name + " may be corrupt. Skipping.");
+                            continue;
                         }
                     }
                 } 
