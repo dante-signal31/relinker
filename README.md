@@ -8,7 +8,8 @@ That works for me but my organization is prone to change its name and when that 
 the root name of our OneDrive folder breaking my links.
 
 I developed this tool to batch change my link files to modify their target path to new root name. It 
-works for me, but please read the LICENSE, if this tool breaks your computer, cause havoc at your home, 
+works for me, but please read the [LICENSE](https://github.com/dante-signal31/relinker/blob/master/LICENSE.txt),
+if this tool breaks your computer, cause havoc at your home, 
 or a thermonuclear happening in your neighborhood don't put your lawyers after me, just fill an 
 [issue](https://github.com/dante-signal31/relinker/issues) at this page and I'll try to fix next version. 
 Any help or [pull request](https://github.com/dante-signal31/relinker/pulls) is really welcome!
@@ -17,7 +18,8 @@ Any help or [pull request](https://github.com/dante-signal31/relinker/pulls) is 
 Ninja way is cloning this repository, assessing code and building by your own, so you can check everything 
 is right.
 
-If you don't feel like that, go to release section and download latest one. Given enough time I may build a 
+If you don't feel like that, go to [releases](https://github.com/dante-signal31/relinker/releases) 
+section and download latest one. Given enough time I may build a 
 proper installer, but so far it is just a zip with all files bundled. Just decompress it in a folder you like 
 and run executable from a console set in that folder.
 
@@ -38,7 +40,7 @@ substitution is actually correct.
 * **backup**: Folder to store a backup folder tree with original links. This way you can keep a backup of your former
 link files to restore then if anything goes wrong.
 
-My advise is doing a first round using *--verbose*, *--simulate* and *backup* flags to be sure you are going to perform
+My advise is doing a first round using *verbose*, *simulate* and *backup* flags to be sure you are going to perform
 the modification you really want, before actually touching anything, and to keep a fallback backup of your links:
 
 ````
@@ -55,6 +57,6 @@ only contains link files at their proper locations. Just replace wrongly modifie
 
 ## Afterwords:
 That's all. If you find any bug feel free to fill a [issue](https://github.com/dante-signal31/relinker/issues), I'll try to fix the 
-tool. You are welcome to ask for modifications or better offer a pull request.
+tool. You are welcome to ask for modifications or better offer a [pull request](https://github.com/dante-signal31/relinker/pulls).
 
 Have a nice day!
