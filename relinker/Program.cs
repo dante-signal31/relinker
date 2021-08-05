@@ -21,10 +21,10 @@ namespace relinker
             [Option('v', "verbose", HelpText = "Print details during execution.")]
             public bool Verbose { get; set; }
             
-            [Option('s', "simulate", HelpText = "Perform search but do not change link files. Normally used with /v flag.")]
+            [Option('s', "simulate", HelpText = "Perform search but do not change link files. Normally used with --verbose flag.")]
             public bool Simulate { get; set; }
             
-            [Option('b', "backup", Required = false, HelpText = "folder to store a backup folder tree with original links.")]
+            [Option('b', "backup", Required = false, HelpText = "Folder to store a backup folder tree with original links.")]
             public string BackupFolder { get; set; }
             
         }
